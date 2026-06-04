@@ -1,15 +1,26 @@
 package com.octavio.ecommerce_api.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 public class ProductDTO {
 
+    @NotBlank
     private String name;
 
+    @NotBlank
     private String description;
 
+    @NotNull
+    @Positive
     private Double price;
 
+    @NotNull
+    @Positive
     private Integer stock;
 
+    @NotNull
     private Long categoryId;
 
     public ProductDTO() {

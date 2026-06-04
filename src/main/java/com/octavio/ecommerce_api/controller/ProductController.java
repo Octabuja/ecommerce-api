@@ -4,6 +4,7 @@ import com.octavio.ecommerce_api.dto.ProductDTO;
 import com.octavio.ecommerce_api.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/products")
@@ -17,7 +18,7 @@ public class ProductController {
 
     @PostMapping
     public ProductDTO createProduct(
-            @RequestBody ProductDTO dto) {
+            @Valid @RequestBody ProductDTO dto) {
 
         return productService.createProduct(dto);
     }
