@@ -2,6 +2,7 @@ package com.octavio.ecommerce_api.controller;
 
 import com.octavio.ecommerce_api.dto.CategoryDTO;
 import com.octavio.ecommerce_api.service.CategoryService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class CategoryController {
 
     @PostMapping
     public CategoryDTO createCategory(
-            @RequestBody CategoryDTO dto) {
+            @Valid @RequestBody CategoryDTO dto) {
 
         return categoryService.createCategory(dto);
     }
@@ -26,5 +27,20 @@ public class CategoryController {
     public List<CategoryDTO> getCategories() {
 
         return categoryService.getCategories();
+    }
+
+    @PutMapping("/{id}")
+    public CategoryDTO updateCategory(
+            @PathVariable Long id,
+            @Valid @RequestBody CategoryDTO dto) {
+
+        return categoryService.updateCategory(id, dto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCategory(
+            @PathVariable Long id) {
+
+        categoryService.deleteCategory(id);
     }
 }

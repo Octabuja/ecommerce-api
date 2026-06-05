@@ -1,5 +1,6 @@
 package com.octavio.ecommerce_api.exception;
 
+import com.octavio.ecommerce_api.dto.ErrorResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -26,5 +27,16 @@ public class GlobalExceptionHandler {
                         ));
 
         return errors;
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponseDTO handleResourceNotFoundException(
+            ResourceNotFoundException ex) {
+
+        return new ErrorResponseDTO(
+                404,
+                ex.getMessage()
+        );
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import com.octavio.ecommerce_api.exception.ResourceNotFoundException;
 
 @Service
 public class ProductService {
@@ -26,7 +27,8 @@ public class ProductService {
     public ProductDTO createProduct(ProductDTO dto) {
 
         Category category = categoryRepository.findById(dto.getCategoryId())
-                .orElseThrow(() -> new RuntimeException("Category not found"));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Category not found"));
 
         Product product = new Product();
 

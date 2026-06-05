@@ -1,6 +1,10 @@
 package com.octavio.ecommerce_api.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class CategoryDTO {
+
+    @NotBlank(message = "Category name is required")
     private String name;
 
     public CategoryDTO() {
