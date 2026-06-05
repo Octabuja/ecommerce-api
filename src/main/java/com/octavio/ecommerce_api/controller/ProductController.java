@@ -35,4 +35,19 @@ public class ProductController {
 
         return productService.getProductsByCategory(id);
     }
+
+    @PutMapping("/{id}")
+    public ProductDTO updateProduct(
+            @PathVariable Long id,
+            @Valid @RequestBody ProductDTO dto) {
+
+        return productService.updateProduct(id, dto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProduct(
+            @PathVariable Long id) {
+
+        productService.deleteProduct(id);
+    }
 }

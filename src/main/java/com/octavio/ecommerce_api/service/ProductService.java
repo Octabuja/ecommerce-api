@@ -76,4 +76,47 @@ public class ProductService {
                 ))
                 .collect(Collectors.toList());
     }
+
+    public ProductDTO updateProduct(
+            Long id,
+            ProductDTO dto) {
+
+        Product product = productRepository.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Product not found"));
+
+        Category category = categoryRepository
+                .findById(dto.getCategoryId())
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Category not found"));
+
+        product.setName(dto.getName());
+        product.setDescription(dto.getDescription());
+        product.setPrice(dto.getPrice());
+        product.setStock(dto.getStock());
+        product.setCategory(category);
+
+        Product updatedProduct =
+                productRepository.save(product);
+
+        return new ProductDTO(
+                updatedProduct.getName(),
+                updatedProduct.getDescription(),
+                updatedProduct.getPrice(),
+                updatedProduct.getStock(),
+                updatedProduct.getCategory().getId()
+        );
+    }
+
+    public void deleteProduct(Long id) {
+
+        Product product = productRepository.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Product not found"));
+
+        productRepository.delete(product);
+    }
 }
