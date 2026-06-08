@@ -36,6 +36,13 @@ public class ProductController {
         return productService.getProductsByCategory(id);
     }
 
+    @GetMapping("/{id}")
+    public ProductDTO getProductById(
+            @PathVariable Long id) {
+
+        return productService.getProductById(id);
+    }
+
     @PutMapping("/{id}")
     public ProductDTO updateProduct(
             @PathVariable Long id,

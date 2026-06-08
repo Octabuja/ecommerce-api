@@ -35,6 +35,17 @@ public class CategoryService {
                 .map(category -> new CategoryDTO(category.getName()))
                 .collect(Collectors.toList());
     }
+    public CategoryDTO getCategoryById(Long id) {
+
+        Category category = categoryRepository.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Category not found"));
+
+        return new CategoryDTO(
+                category.getName()
+        );
+    }
 
     public CategoryDTO updateCategory(
             Long id,

@@ -77,6 +77,22 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
+    public ProductDTO getProductById(Long id) {
+
+        Product product = productRepository.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Product not found"));
+
+        return new ProductDTO(
+                product.getName(),
+                product.getDescription(),
+                product.getPrice(),
+                product.getStock(),
+                product.getCategory().getId()
+        );
+    }
+
     public ProductDTO updateProduct(
             Long id,
             ProductDTO dto) {
