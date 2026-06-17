@@ -1,59 +1,79 @@
-# E-Commerce API
+E-Commerce API
 
-REST API desarrollada con Spring Boot y MySQL para la gestión de un sistema e-commerce.
+API REST desarrollada con Java, Spring Boot y MySQL para la gestión de un sistema de comercio electrónico.
 
-## 🚀 Tecnologías utilizadas
+Tecnologías utilizadas
 
-- Java
-- Spring Boot
-- Spring Data JPA
-- Spring Security
-- MySQL
-- Maven
-- Swagger / OpenAPI
-- Git & GitHub
+* Java
+* Spring Boot
+* Spring Data JPA
+* Hibernate
+* MySQL
+* Maven
+* Swagger / OpenAPI
+* Git & GitHub
 
----
+Funcionalidades implementadas
 
-## 📌 Estado del proyecto
+Categorías
 
-Proyecto actualmente en desarrollo.
+* Crear categoría
+* Obtener categorías
+* Obtener categoría por ID
+* Actualizar categoría
+* Eliminar categoría
 
-## 📍Funcionalidades planificadas
+Productos
 
-- Autenticación con JWT
-- Gestión de usuarios
-- Gestión de productos y categorías
-- Carrito de compras
-- Gestión de pedidos
-- Roles y seguridad
-- Tests unitarios
-- Docker
+* Crear producto
+* Obtener productos
+* Obtener producto por ID
+* Obtener productos por categoría
+* Actualizar producto
+* Eliminar producto
 
----
+Carrito de compras
 
-## ▶️ Cómo ejecutar el proyecto
+* Crear carrito
+* Agregar productos al carrito
+* Consultar contenido del carrito
 
-1. Clonar repositorio
+Infraestructura
 
-```bash
-git clone URL_DEL_REPO
-```
+* Validación de datos mediante Bean Validation
+* Manejo global de excepciones
+* DTOs para entrada y salida de datos
+* Arquitectura en capas (Controller, Service, Repository)
+* Persistencia mediante Spring Data JPA e Hibernate
+* Documentación interactiva con Swagger
 
-2. Configurar MySQL en:
+Estado del proyecto
 
-```properties
+Proyecto en desarrollo activo.
+
+Próximas funcionalidades
+
+* Gestión de pedidos (Order y OrderItem)
+* Actualización y eliminación de productos del carrito
+* Autenticación y autorización con Spring Security y JWT
+* Gestión de usuarios y roles
+* Tests unitarios
+* Docker
+
+Cómo ejecutar el proyecto
+
+1. Clonar el repositorio
+
+git clone URL_DEL_REPOSITORIO
+
+2. Configurar la base de datos MySQL en:
+
 application.properties
-```
 
-3. Ejecutar:
+3. Ejecutar la aplicación
 
-```bash
 mvn spring-boot:run
-```
 
-4. Acceder a Swagger:
+4. Acceder a Swagger
 
-```text
 http://localhost:8080/swagger-ui/index.html
-```
