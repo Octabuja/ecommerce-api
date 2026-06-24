@@ -1,25 +1,28 @@
 package com.octavio.ecommerce_api.model;
 
+import java.util.ArrayList;
 import java.util.List;
+
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
-@Entity
-public class Order {
+    @Entity
+    @Table(name = "orders")
+    public class Order {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
 
-    private LocalDateTime createdAt;
+        private LocalDateTime createdAt;
 
-    private Double total;
+        private Double total;
 
-    private String status;
+        private String status;
 
-    @OneToMany(mappedBy = "order")
-    private List<OrderItem> items;
+        @OneToMany(mappedBy = "order")
+        private List<OrderItem> items = new ArrayList<>();
 
     public Order() {
     }

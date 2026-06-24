@@ -60,6 +60,21 @@ public class CartService {
                         new ResourceNotFoundException(
                                 "Product not found"));
 
+        for (CartItem item : cart.getItems()) {
+
+            if (item.getProduct().getId()
+                    .equals(product.getId())) {
+
+                item.setQuantity(
+                        item.getQuantity()
+                                + dto.getQuantity());
+
+                cartItemRepository.save(item);
+
+                return;
+            }
+        }
+
         CartItem cartItem = new CartItem();
 
         cartItem.setCart(cart);

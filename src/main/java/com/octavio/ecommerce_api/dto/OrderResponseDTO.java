@@ -2,7 +2,7 @@ package com.octavio.ecommerce_api.dto;
 
 import java.util.List;
 import java.time.LocalDateTime;
-import java.util.List;
+
 
 public class OrderResponseDTO {
 
@@ -22,15 +22,15 @@ public class OrderResponseDTO {
     public OrderResponseDTO(
             Long id,
             LocalDateTime createdAt,
-            List<OrderItemDTO> items,
+            Double total,
             String status,
-            Double total){
+            List<OrderItemDTO> items) {
 
         this.id = id;
-        this.items = items;
         this.createdAt = createdAt;
         this.total = total;
         this.status = status;
+        this.items = items;
     }
 
     public Long getId() {
